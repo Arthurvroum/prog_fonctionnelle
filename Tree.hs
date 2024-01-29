@@ -30,4 +30,4 @@ buildExprList [] [x] = x
 buildExprList (x:xs) (y:yx:yz) = buildExpr y x (buildExprList xs (yx:yz))
 
 buildAST :: ([String], [String]) -> ASTree
-buildAST (ops, vals) = buildExprList ops (mapValues vals)
+buildAST (x, y) = buildExprList x (mapValues y)
