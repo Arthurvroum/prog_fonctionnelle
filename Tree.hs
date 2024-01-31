@@ -31,3 +31,10 @@ buildExprList (x:xs) (y:yx:yz) = buildExpr y x (buildExprList xs (yx:yz))
 
 buildAST :: ([String], [String]) -> ASTree
 buildAST (x, y) = buildExprList x (mapValues y)
+
+evaluateAST :: ASTree -> Int
+evaluateAST (Add e1 e2) = evaluateAST e1 + evaluateAST e2
+evaluateAST (Sub e1 e2) = evaluateAST e1 - evaluateAST e2
+evaluateAST (Mul e1 e2) = evaluateAST e1 * evaluateAST e2
+evaluateAST (Div e1 e2) = evaluateAST e1 `div` evaluateAST e2
+evaluateAST (Value n) = n
